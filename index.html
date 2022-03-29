@@ -26,7 +26,7 @@
       const cWSvg = 1000,
         cHSvg = 500,
         cPaddingLeft = 40,
-        cWBar = cWSvg/300,
+        cWBar = cWSvg / 300,
         cPaddingBottom = 50;
 
       const graph = d3
@@ -125,15 +125,13 @@
             //tooltip insert
             .on("mouseover", (d) => {
               let vDataDate = this.event.target.attributes["data-date"].value;
-              tooltip.transition().duration(10).style("opacity", 0.9);
+              tooltip
+                .transition()
+                .duration(10)
+                .style("opacity", 0.9)
+                .style("z-index", 1);
               tooltip
                 .attr("data-date", () => {
-                  console.log(
-                    vDataDate ===
-                      vDataset.data[
-                        this.event.target.attributes["index"].value
-                      ][0]
-                  );
                   return vDataDate;
                 })
                 .html(
@@ -150,7 +148,11 @@
                 .style("z-index", +2);
             })
             .on("mouseout", (d) => {
-              tooltip.transition().duration(500).style("opacity", 0);
+              tooltip
+                .transition()
+                .duration(500)
+                .style("opacity", 0)
+                .style("z-index", -2);
             });
         });
     </script>
